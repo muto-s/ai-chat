@@ -8,16 +8,16 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🎯 フェーズ1: 環境構築とプロジェクト初期化
 
 ### 1.1 プロジェクトセットアップ
-- [ ] Node.js 20.x以上がインストールされているか確認
-- [ ] Next.jsプロジェクトの作成（TypeScript, Tailwind CSS, ESLint有効）
+- [x] Node.js 20.x以上がインストールされているか確認
+- [x] Next.jsプロジェクトの作成（TypeScript, Tailwind CSS, ESLint有効）
   ```bash
   npx create-next-app@latest . --typescript --tailwind --app --eslint
   ```
-- [ ] 必要なパッケージのインストール
+- [x] 必要なパッケージのインストール
   ```bash
-  npm install prisma @prisma/client @anthropic-ai/sdk hono @mastra/core @mastra/anthropic react-markdown zod
+  npm install prisma @prisma/client hono mastra@beta @mastra/core@beta @ai-sdk/anthropic react-markdown zod
   ```
-- [ ] 開発用パッケージのインストール
+- [x] 開発用パッケージのインストール
   ```bash
   npm install -D @types/node vitest @vitest/ui @playwright/test supertest @types/supertest
   ```
@@ -30,16 +30,16 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 - [ ] Google Cloudプロジェクトの作成（デプロイ用）
 
 ### 1.3 環境変数設定
-- [ ] `.env.local` ファイルの作成
-- [ ] `DATABASE_URL` の設定（MongoDB接続文字列）
-- [ ] `CLAUDE_API_KEY` の設定
-- [ ] `NEXT_PUBLIC_APP_URL` の設定（開発: http://localhost:3000）
-- [ ] `.env.example` ファイルの作成（テンプレート用）
+- [x] `.env.local` ファイルの作成
+- [x] `DATABASE_URL` の設定（MongoDB接続文字列）
+- [x] `ANTHROPIC_API_KEY` の設定
+- [x] `NEXT_PUBLIC_APP_URL` の設定（開発: http://localhost:3000）
+- [x] `.env.example` ファイルの作成（テンプレート用）
 
 ### 1.4 Git初期化
-- [ ] `.gitignore` の確認・更新（.env.local, node_modules等）
-- [ ] Gitリポジトリの初期化
-- [ ] 初回コミット
+- [x] `.gitignore` の確認・更新（.env.local, node_modules等）
+- [x] Gitリポジトリの初期化
+- [x] 初回コミット
 
 ---
 
@@ -425,7 +425,7 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 
 | フェーズ | ステータス | 完了日 |
 |---------|----------|--------|
-| フェーズ1: 環境構築 | ⬜️ 未着手 | - |
+| フェーズ1: 環境構築 | ✅ 完了 | 2026-01-21 |
 | フェーズ2: データベース | ⬜️ 未着手 | - |
 | フェーズ3: UIコンポーネント | ⬜️ 未着手 | - |
 | フェーズ4: バックエンドAPI | ⬜️ 未着手 | - |
