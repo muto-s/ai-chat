@@ -12,9 +12,9 @@ interface MarkdownRendererProps {
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <ReactMarkdown
-      className="prose prose-sm max-w-none dark:prose-invert"
-      components={{
+    <div className="prose prose-sm max-w-none dark:prose-invert">
+      <ReactMarkdown
+        components={{
         // コードブロック
         code: ({ node, className, children, ...props }) => {
           const match = /language-(\w+)/.exec(className || '');
@@ -62,9 +62,10 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             {children}
           </ol>
         ),
-      }}
-    >
-      {content}
-    </ReactMarkdown>
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
   );
 }
