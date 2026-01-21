@@ -48,6 +48,23 @@ Claude APIを使用した汎用的なAIチャットボットアプリケーシ�
   - E2Eテスト: Playwright
   - APIテスト: Supertest / Vitest
 
+### 2.6 開発コマンド（Makefile）
+プロジェクトルートに`Makefile`が存在し、主要な開発タスクを簡単に実行できます。
+
+**主要コマンド**:
+- `make help` - 利用可能なコマンド一覧を表示
+- `make setup` - 初期セットアップ（依存関係インストール + Prisma生成）
+- `make dev` - 開発サーバー起動
+- `make build` - 本番ビルド
+- `make test` - 単体テスト実行
+- `make test-e2e` - E2Eテスト実行
+- `make prisma-generate` - Prismaクライアント生成
+- `make prisma-push` - データベーススキーマをプッシュ
+- `make docker-build` - Dockerイメージをビルド
+- `make deploy-gcloud` - Google Cloud Runにデプロイ
+
+詳細は`make help`で確認可能。
+
 ---
 
 ## 3. システム要件
