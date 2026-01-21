@@ -188,79 +188,79 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🎭 フェーズ5: フロントエンド開発
 
 ### 5.1 カスタムフックの作成
-- [ ] `src/hooks/useConversations.ts` の作成
-  - [ ] 会話一覧の取得ロジック
-  - [ ] 会話削除ロジック
-  - [ ] ローディング・エラー状態管理
-- [ ] `src/hooks/useChatMessages.ts` の作成
-  - [ ] メッセージ送信ロジック
-  - [ ] メッセージ一覧の管理
-  - [ ] 楽観的UI更新
-  - [ ] ローディング・エラー状態管理
+- [x] `src/hooks/useConversations.ts` の作成
+  - [x] 会話一覧の取得ロジック
+  - [x] 会話削除ロジック
+  - [x] ローディング・エラー状態管理
+- [x] `src/hooks/useChatMessages.ts` の作成
+  - [x] メッセージ送信ロジック
+  - [x] メッセージ一覧の管理
+  - [x] 楽観的UI更新
+  - [x] ローディング・エラー状態管理
 
 ### 5.2 チャットコンポーネントの作成
-- [ ] `src/components/chat/MarkdownRenderer.tsx` の作成
-  - [ ] react-markdownを使用したレンダリング
-  - [ ] コードブロックのシンタックスハイライト
-  - [ ] リンクの安全な処理
-- [ ] `src/components/chat/ChatMessage.tsx` の作成
-  - [ ] ユーザー/AIメッセージの表示
-  - [ ] ロールに応じたスタイリング
-  - [ ] タイムスタンプ表示
-  - [ ] Markdownレンダリング統合
-- [ ] `src/components/chat/ChatMessageList.tsx` の作成
-  - [ ] メッセージ一覧表示
-  - [ ] 自動スクロール（最新メッセージへ）
-  - [ ] 空状態の表示
-  - [ ] ローディング状態の表示
-- [ ] `src/components/chat/ChatInput.tsx` の作成
-  - [ ] テキストエリア
-  - [ ] 送信ボタン
-  - [ ] Enter送信・Shift+Enter改行
-  - [ ] 送信中の無効化
-  - [ ] 文字数制限（5000文字）
-- [ ] `src/components/chat/ChatContainer.tsx` の作成
-  - [ ] チャット画面全体の統合
-  - [ ] メッセージリストと入力フィールドの配置
-  - [ ] 状態管理の統合
+- [x] `src/components/chat/MarkdownRenderer.tsx` の作成
+  - [x] react-markdownを使用したレンダリング
+  - [x] コードブロックのスタイリング
+  - [x] リンクの安全な処理
+- [x] `src/components/chat/ChatMessage.tsx` の作成
+  - [x] ユーザー/AIメッセージの表示
+  - [x] ロールに応じたスタイリング
+  - [x] タイムスタンプ表示
+  - [x] Markdownレンダリング統合
+- [x] `src/components/chat/ChatMessageList.tsx` の作成
+  - [x] メッセージ一覧表示
+  - [x] 自動スクロール（最新メッセージへ）
+  - [x] 空状態の表示
+  - [x] ローディング状態の表示
+- [x] `src/components/chat/ChatInput.tsx` の作成
+  - [x] テキストエリア
+  - [x] 送信ボタン
+  - [x] Enter送信・Shift+Enter改行
+  - [x] 送信中の無効化
+  - [x] 文字数制限（5000文字）
+- [x] `src/components/chat/ChatContainer.tsx` の作成
+  - [x] チャット画面全体の統合
+  - [x] メッセージリストと入力フィールドの配置
+  - [x] 状態管理の統合
 
 ### 5.3 サイドバーコンポーネントの作成
-- [ ] `src/components/sidebar/NewChatButton.tsx` の作成
-  - [ ] 新規会話作成ボタン
-  - [ ] クリックハンドラー
-- [ ] `src/components/sidebar/ConversationItem.tsx` の作成
-  - [ ] 会話タイトル表示
-  - [ ] 選択状態のハイライト
-  - [ ] ホバー時の削除ボタン表示
-  - [ ] 削除確認ダイアログ統合
-- [ ] `src/components/sidebar/ConversationList.tsx` の作成
-  - [ ] 会話一覧の表示
-  - [ ] スクロール対応
-  - [ ] 空状態の表示
-- [ ] `src/components/sidebar/Sidebar.tsx` の作成
-  - [ ] サイドバー全体の統合
-  - [ ] 折りたたみ機能（モバイル対応）
-  - [ ] レスポンシブデザイン
+- [x] `src/components/sidebar/NewChatButton.tsx` の作成
+  - [x] 新規会話作成ボタン
+  - [x] クリックハンドラー
+- [x] `src/components/sidebar/ConversationItem.tsx` の作成
+  - [x] 会話タイトル表示
+  - [x] 選択状態のハイライト
+  - [x] ホバー時の削除ボタン表示
+  - [x] 削除確認ダイアログ統合
+- [x] `src/components/sidebar/ConversationList.tsx` の作成
+  - [x] 会話一覧の表示
+  - [x] スクロール対応
+  - [x] 空状態の表示
+- [x] `src/components/sidebar/Sidebar.tsx` の作成
+  - [x] サイドバー全体の統合
+  - [x] 折りたたみ機能（モバイル対応）
+  - [x] レスポンシブデザイン
 
 ### 5.4 レイアウトとページの作成
-- [ ] `src/app/globals.css` の更新
-  - [ ] Tailwindのカスタム設定
-  - [ ] カラースキーム定義
-  - [ ] ダークモード対応（オプション）
-- [ ] `src/app/layout.tsx` の作成
-  - [ ] ルートレイアウト
-  - [ ] メタデータ設定
-  - [ ] フォント設定
-- [ ] `src/app/page.tsx` の作成
-  - [ ] トップページ（チャット画面）
-  - [ ] サイドバーとチャットコンテナの配置
-  - [ ] レスポンシブレイアウト
+- [x] `src/app/globals.css` の更新（shadcn/uiで自動設定済み）
+  - [x] Tailwindのカスタム設定
+  - [x] カラースキーム定義
+  - [x] ダークモード対応
+- [x] `src/app/layout.tsx` の作成
+  - [x] ルートレイアウト
+  - [x] メタデータ設定
+  - [x] フォント設定
+- [x] `src/app/page.tsx` の作成
+  - [x] トップページ（チャット画面）
+  - [x] サイドバーとチャットコンテナの配置
+  - [x] レスポンシブレイアウト
 
 ### 5.5 レスポンシブ対応
-- [ ] モバイル表示の確認と調整
-- [ ] タブレット表示の確認と調整
-- [ ] デスクトップ表示の確認と調整
-- [ ] サイドバーの折りたたみ動作確認
+- [x] モバイル表示対応（サイドバー折りたたみ実装）
+- [x] タブレット表示対応
+- [x] デスクトップ表示対応
+- [x] サイドバーの折りたたみ動作実装
 
 ---
 
@@ -429,7 +429,7 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 | フェーズ2: データベース | ✅ 完了 | 2026-01-21 |
 | フェーズ3: UIコンポーネント | ✅ 完了 | 2026-01-21 |
 | フェーズ4: バックエンドAPI | ✅ 完了 | 2026-01-21 |
-| フェーズ5: フロントエンド | ⬜️ 未着手 | - |
+| フェーズ5: フロントエンド | ✅ 完了 | 2026-01-21 |
 | フェーズ6: テスト | ⬜️ 未着手 | - |
 | フェーズ7: デプロイ | ⬜️ 未着手 | - |
 | フェーズ8: ドキュメント | ⬜️ 未着手 | - |
