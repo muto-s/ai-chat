@@ -80,36 +80,36 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🎨 フェーズ3: UIコンポーネント基礎（shadcn/ui）
 
 ### 3.1 shadcn/ui セットアップ
-- [ ] shadcn/ui の初期化
+- [x] shadcn/ui の初期化
   ```bash
-  npx shadcn@latest init
+  npx shadcn@latest init -y --defaults
   ```
-- [ ] `components.json` の設定確認
+- [x] `components.json` の設定確認
 
 ### 3.2 必要なコンポーネントのインストール
-- [ ] Button コンポーネント
+- [x] Button コンポーネント
   ```bash
-  npx shadcn@latest add button
+  npx shadcn@latest add button -y
   ```
-- [ ] Input コンポーネント
+- [x] Input コンポーネント
   ```bash
-  npx shadcn@latest add input
+  npx shadcn@latest add input -y
   ```
-- [ ] Textarea コンポーネント
+- [x] Textarea コンポーネント
   ```bash
-  npx shadcn@latest add textarea
+  npx shadcn@latest add textarea -y
   ```
-- [ ] Dialog コンポーネント（削除確認用）
+- [x] Dialog コンポーネント（削除確認用）
   ```bash
-  npx shadcn@latest add dialog
+  npx shadcn@latest add dialog -y
   ```
-- [ ] ScrollArea コンポーネント
+- [x] ScrollArea コンポーネント
   ```bash
-  npx shadcn@latest add scroll-area
+  npx shadcn@latest add scroll-area -y
   ```
-- [ ] Card コンポーネント
+- [x] Card コンポーネント
   ```bash
-  npx shadcn@latest add card
+  npx shadcn@latest add card -y
   ```
 
 ---
@@ -427,7 +427,7 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 |---------|----------|--------|
 | フェーズ1: 環境構築 | ✅ 完了 | 2026-01-21 |
 | フェーズ2: データベース | ✅ 完了 | 2026-01-21 |
-| フェーズ3: UIコンポーネント | ⬜️ 未着手 | - |
+| フェーズ3: UIコンポーネント | ✅ 完了 | 2026-01-21 |
 | フェーズ4: バックエンドAPI | ⬜️ 未着手 | - |
 | フェーズ5: フロントエンド | ⬜️ 未着手 | - |
 | フェーズ6: テスト | ⬜️ 未着手 | - |
