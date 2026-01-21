@@ -46,31 +46,31 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🗄️ フェーズ2: データベース・Prismaセットアップ
 
 ### 2.1 Prismaの初期化
-- [ ] Prisma初期化コマンド実行
+- [x] Prisma初期化コマンド実行
   ```bash
-  npx prisma init
+  npx prisma init --datasource-provider mongodb
   ```
-- [ ] `prisma/schema.prisma` の作成
-  - [ ] datasource設定（MongoDB）
-  - [ ] generator設定
-  - [ ] Conversationモデル定義
-  - [ ] Messageモデル定義
+- [x] `prisma/schema.prisma` の作成
+  - [x] datasource設定（MongoDB）
+  - [x] generator設定
+  - [x] Conversationモデル定義
+  - [x] Messageモデル定義
 
 ### 2.2 Prismaクライアントの設定
-- [ ] `src/lib/prisma.ts` の作成
-  - [ ] PrismaClientのシングルトンインスタンス作成
-  - [ ] 開発環境でのホットリロード対応
+- [x] `src/lib/prisma.ts` の作成
+  - [x] PrismaClientのシングルトンインスタンス作成
+  - [x] 開発環境でのホットリロード対応
 
 ### 2.3 データベースマイグレーション
-- [ ] Prismaクライアント生成
+- [x] Prismaクライアント生成
   ```bash
   npx prisma generate
   ```
-- [ ] データベーススキーマのプッシュ
+- [ ] データベーススキーマのプッシュ（MongoDB接続設定後に実行）
   ```bash
   npx prisma db push
   ```
-- [ ] Prisma Studioで動作確認
+- [ ] Prisma Studioで動作確認（MongoDB接続設定後に実行）
   ```bash
   npx prisma studio
   ```
@@ -426,7 +426,7 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 | フェーズ | ステータス | 完了日 |
 |---------|----------|--------|
 | フェーズ1: 環境構築 | ✅ 完了 | 2026-01-21 |
-| フェーズ2: データベース | ⬜️ 未着手 | - |
+| フェーズ2: データベース | ✅ 完了 | 2026-01-21 |
 | フェーズ3: UIコンポーネント | ⬜️ 未着手 | - |
 | フェーズ4: バックエンドAPI | ⬜️ 未着手 | - |
 | フェーズ5: フロントエンド | ⬜️ 未着手 | - |
