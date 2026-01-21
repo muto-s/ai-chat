@@ -1,0 +1,78 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ai-chat
+  labels:
+    cloud.googleapis.com/location: asia-northeast1
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      annotations:
+        # スケーリング設定
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '10'
+
+        # CPU設定（リクエスト処理時のみCPU使用）
+        run.googleapis.com/cpu-throttling: 'true'
+
+        # スタートアップタイムアウト（秒）
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      # タイムアウト設定（秒）
+      timeoutSeconds: 300
+
+      # コンカレンシー設定（1コンテナあたりの同時リクエスト数）
+      containerConcurrency: 80
+
+      containers:
+      - image: gcr.io/PROJECT_ID/ai-chat:latest
+
+        # ポート設定
+        ports:
+        - name: http1
+          containerPort: 8080
+
+        # リソース制限
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+
+        # 環境変数（本番環境用）
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database-url
+              key: latest
+        - name: ANTHROPIC_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: anthropic-api-key
+              key: latest
+        - name: NEXT_PUBLIC_APP_URL
+          value: https://ai-chat-HASH-an.a.run.app
+
+        # ヘルスチェック
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
+
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3

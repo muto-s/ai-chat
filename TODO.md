@@ -325,33 +325,48 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🚀 フェーズ7: デプロイ準備
 
 ### 7.1 Dockerファイルの作成
-- [ ] `Dockerfile` の作成
-  - [ ] マルチステージビルド設定
-  - [ ] 依存関係のインストール
-  - [ ] Prismaクライアント生成
-  - [ ] Next.jsビルド
-  - [ ] 本番環境設定
-- [ ] `.dockerignore` の作成
-  - [ ] 不要なファイルの除外
+- [x] `Dockerfile` の作成
+  - [x] マルチステージビルド設定（deps, build-deps, build, production）
+  - [x] 依存関係のキャッシュ最適化
+  - [x] Prismaクライアント生成
+  - [x] Next.js standalone出力
+  - [x] 非rootユーザー（nextjs）での実行
+  - [x] ヘルスチェック設定
+  - [x] ポート8080設定（Cloud Run対応）
+- [x] `.dockerignore` の作成
+  - [x] 不要なファイルの除外
+  - [x] テストファイル、ドキュメント、CI/CD設定の除外
 
 ### 7.2 Google Cloud Run設定
-- [ ] Cloud Run用の設定ファイル作成（オプション）
-- [ ] 環境変数の準備（本番用）
-- [ ] MongoDB Atlas接続設定の確認
-- [ ] IPホワイトリストの設定（必要に応じて）
+- [x] `cloud-run.yaml` の作成
+  - [x] スケーリング設定（min: 0, max: 10）
+  - [x] リソース制限（CPU: 1, Memory: 512Mi）
+  - [x] Secret Manager統合
+  - [x] ヘルスチェック設定
+- [x] `.env.production.example` の作成
+  - [x] 本番環境用環境変数テンプレート
+- [x] `DEPLOYMENT.md` の作成
+  - [x] セットアップ手順
+  - [x] Secret Managerの設定
+  - [x] MongoDB Atlasの設定
+  - [x] デプロイコマンド
+  - [x] トラブルシューティング
+  - [x] コスト最適化のヒント
+  - [x] セキュリティのベストプラクティス
 
 ### 7.3 CI/CD設定（オプション）
-- [ ] `.github/workflows/deploy.yml` の作成
-  - [ ] ビルドステップ
-  - [ ] テストステップ
-  - [ ] デプロイステップ
-- [ ] GitHubシークレットの設定
-  - [ ] GCP_SA_KEY
-  - [ ] GCP_PROJECT_ID
-  - [ ] DATABASE_URL
-  - [ ] CLAUDE_API_KEY
+- [x] `.github/workflows/deploy.yml` の作成
+  - [x] テストステップ（lint, unit tests）
+  - [x] ビルドステップ（Docker build & push）
+  - [x] デプロイステップ（Cloud Run deploy）
+  - [x] サービスURL出力
+- [x] `.github/workflows/test.yml` の作成
+  - [x] PRでのテスト自動実行
+  - [x] カバレッジレポートのアップロード
+- [x] `next.config.ts` の更新
+  - [x] standalone出力の有効化
 
-### 7.4 デプロイ実行
+### 7.4 デプロイ実行（手動）
 - [ ] ローカルでDockerビルドテスト
   ```bash
   docker build -t ai-chat .
