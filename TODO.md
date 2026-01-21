@@ -117,31 +117,31 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 ## 🔧 フェーズ4: バックエンドAPI開発
 
 ### 4.1 型定義の作成
-- [ ] `src/types/chat.ts` の作成
-  - [ ] Role型の定義
-  - [ ] Message型の定義
-  - [ ] Conversation型の定義
-  - [ ] ChatRequest型の定義
-  - [ ] ChatResponse型の定義
-- [ ] `src/types/api.ts` の作成
-  - [ ] APIエラーレスポンス型の定義
+- [x] `src/types/chat.ts` の作成
+  - [x] Role型の定義
+  - [x] Message型の定義
+  - [x] Conversation型の定義
+  - [x] ChatRequest型の定義
+  - [x] ChatResponse型の定義
+- [x] `src/types/api.ts` の作成
+  - [x] APIエラーレスポンス型の定義
 
 ### 4.2 Mastra統合
-- [ ] `src/lib/claude.ts` の作成
-  - [ ] Mastraインスタンスの初期化
-  - [ ] AnthropicProvider設定
-  - [ ] sendMessageToClaude関数の実装
-  - [ ] エラーハンドリング
+- [x] `src/lib/claude.ts` の作成
+  - [x] Mastra Agentの初期化
+  - [x] Anthropic Claudeモデル設定
+  - [x] sendMessageToClaude関数の実装
+  - [x] エラーハンドリング
 
 ### 4.3 ユーティリティの作成
-- [ ] `src/utils/errors.ts` の作成
-  - [ ] カスタムエラークラス定義
-  - [ ] エラーハンドリングヘルパー関数
-- [ ] `src/utils/logger.ts` の作成
-  - [ ] 基本的なロガー実装
-- [ ] `src/lib/utils.ts` の更新
-  - [ ] 会話タイトル生成関数
-  - [ ] 日付フォーマット関数
+- [x] `src/utils/errors.ts` の作成
+  - [x] カスタムエラークラス定義
+  - [x] エラーハンドリングヘルパー関数
+- [x] `src/utils/logger.ts` の作成
+  - [x] 基本的なロガー実装
+- [x] `src/lib/utils.ts` の更新
+  - [x] 会話タイトル生成関数
+  - [x] 日付フォーマット関数
 
 ### 4.4 Hono統合（オプション）
 - [ ] `src/lib/hono.ts` の作成
@@ -150,38 +150,38 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 - [ ] Honoルートの定義（Next.js API Routesと統合）
 
 ### 4.5 API Route: POST /api/chat
-- [ ] `src/app/api/chat/route.ts` の作成
-  - [ ] POSTハンドラー実装
-  - [ ] リクエストバリデーション（zod使用）
-  - [ ] 新規会話の作成処理
-  - [ ] ユーザーメッセージの保存
-  - [ ] Claude APIへのリクエスト（Mastra経由）
-  - [ ] AIメッセージの保存
-  - [ ] レスポンス返却
-  - [ ] エラーハンドリング
+- [x] `src/app/api/chat/route.ts` の作成
+  - [x] POSTハンドラー実装
+  - [x] リクエストバリデーション（zod使用）
+  - [x] 新規会話の作成処理
+  - [x] ユーザーメッセージの保存
+  - [x] Claude APIへのリクエスト（Mastra経由）
+  - [x] AIメッセージの保存
+  - [x] レスポンス返却
+  - [x] エラーハンドリング
 
 ### 4.6 API Route: GET /api/conversations
-- [ ] `src/app/api/conversations/route.ts` の作成
-  - [ ] GETハンドラー実装
-  - [ ] 会話一覧の取得（最新順）
-  - [ ] レスポンス返却
-  - [ ] エラーハンドリング
+- [x] `src/app/api/conversations/route.ts` の作成
+  - [x] GETハンドラー実装
+  - [x] 会話一覧の取得（最新順）
+  - [x] レスポンス返却
+  - [x] エラーハンドリング
 
 ### 4.7 API Route: GET /api/conversations/:id
-- [ ] `src/app/api/conversations/[id]/route.ts` の作成
-  - [ ] GETハンドラー実装
-  - [ ] 会話IDのバリデーション
-  - [ ] 会話とメッセージの取得
-  - [ ] 404エラーハンドリング
-  - [ ] レスポンス返却
+- [x] `src/app/api/conversations/[id]/route.ts` の作成
+  - [x] GETハンドラー実装
+  - [x] 会話IDのバリデーション
+  - [x] 会話とメッセージの取得
+  - [x] 404エラーハンドリング
+  - [x] レスポンス返却
 
 ### 4.8 API Route: DELETE /api/conversations/:id
-- [ ] `src/app/api/conversations/[id]/route.ts` にDELETEハンドラー追加
-  - [ ] DELETEハンドラー実装
-  - [ ] 会話IDのバリデーション
-  - [ ] 会話の削除（カスケード削除でメッセージも削除）
-  - [ ] 404エラーハンドリング
-  - [ ] レスポンス返却
+- [x] `src/app/api/conversations/[id]/route.ts` にDELETEハンドラー追加
+  - [x] DELETEハンドラー実装
+  - [x] 会話IDのバリデーション
+  - [x] 会話の削除（カスケード削除でメッセージも削除）
+  - [x] 404エラーハンドリング
+  - [x] レスポンス返却
 
 ---
 
@@ -428,7 +428,7 @@ Next.js App Router + Hono + Prisma + MongoDB + Mastra + Claude API を使用し�
 | フェーズ1: 環境構築 | ✅ 完了 | 2026-01-21 |
 | フェーズ2: データベース | ✅ 完了 | 2026-01-21 |
 | フェーズ3: UIコンポーネント | ✅ 完了 | 2026-01-21 |
-| フェーズ4: バックエンドAPI | ⬜️ 未着手 | - |
+| フェーズ4: バックエンドAPI | ✅ 完了 | 2026-01-21 |
 | フェーズ5: フロントエンド | ⬜️ 未着手 | - |
 | フェーズ6: テスト | ⬜️ 未着手 | - |
 | フェーズ7: デプロイ | ⬜️ 未着手 | - |
