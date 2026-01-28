@@ -45,7 +45,7 @@ export function Sidebar({
 
   if (isCollapsed) {
     return (
-      <div className={`flex w-16 flex-col border-r bg-white p-2 dark:border-gray-800 dark:bg-gray-900 ${className}`}>
+      <div className={`flex w-16 flex-col border-r bg-blue-50 p-2 dark:border-blue-800 dark:bg-blue-900 ${className}`}>
         <Button
           variant="ghost"
           size="sm"
@@ -59,8 +59,8 @@ export function Sidebar({
   }
 
   return (
-    <div className={`flex w-64 flex-col border-r bg-white dark:border-gray-800 dark:bg-gray-900 ${className}`}>
-      <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
+    <div className={`flex w-64 flex-col border-r bg-blue-50 dark:border-blue-800 dark:bg-blue-900 ${className}`}>
+      <div className="flex items-center justify-between border-b p-4 dark:border-blue-800">
         <h2 className="text-lg font-semibold">会話</h2>
         <div className="flex items-center gap-2">
           <ThemeToggle />

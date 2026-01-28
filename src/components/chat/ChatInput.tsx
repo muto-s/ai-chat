@@ -37,7 +37,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   };
 
   return (
-    <div className="border-t bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+    <div className="border-t bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900">
       <div className="flex gap-2">
         <Textarea
           ref={textareaRef}

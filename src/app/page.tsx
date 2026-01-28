@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950">
+    <div className="flex h-screen overflow-hidden bg-blue-50 dark:bg-blue-950">
       {/* サイドバー */}
       <Sidebar
         activeConversationId={activeConversationId}
@@ -32,7 +32,7 @@ export default function Home() {
       {/* メインチャットエリア */}
       <main className="flex flex-1 flex-col overflow-hidden">
         {/* ヘッダー */}
-        <header className="border-b bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+        <header className="border-b bg-blue-100 p-4 dark:border-blue-800 dark:bg-blue-900">
           <h1 className="text-xl font-semibold">
             {activeConversationId ? 'AI Chat' : '新規会話'}
           </h1>

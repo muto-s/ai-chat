@@ -43,8 +43,8 @@ export function ConversationItem({
       <div
         className={`group relative cursor-pointer rounded-lg p-3 transition-colors ${
           isActive
-            ? 'bg-blue-50 dark:bg-blue-900/20'
-            : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+            ? 'bg-blue-100 dark:bg-blue-800/50'
+            : 'hover:bg-blue-100/50 dark:hover:bg-blue-800/30'
         }`}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}

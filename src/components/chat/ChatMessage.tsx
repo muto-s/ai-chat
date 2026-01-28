@@ -24,7 +24,7 @@ export const ChatMessage = memo(function ChatMessage({ message }: ChatMessagePro
         className={`max-w-[80%] rounded-lg px-4 py-3 ${
           isUser
             ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100'
+            : 'bg-blue-100 text-gray-900 dark:bg-blue-800 dark:text-gray-100'
         }`}
       >
         <div className="text-sm">
