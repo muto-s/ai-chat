@@ -14,7 +14,7 @@ import type { ChatResponse } from '@/types/chat';
 
 // リクエストバリデーションスキーマ
 const chatRequestSchema = z.object({
-  conversationId: z.string().optional(),
+  conversationId: z.string().nullish(), // null と undefined の両方を許可
   message: z.string().min(1).max(5000),
 });
 
@@ -23,9 +23,15 @@ export async function POST(request: Request) {
     // リクエストボディの解析
     const body = await request.json();
 
+    logger.debug('Received request body', { body });
+
     // バリデーション
     const validationResult = chatRequestSchema.safeParse(body);
     if (!validationResult.success) {
+      logger.error('Validation failed', {
+        errors: validationResult.error.errors,
+        body,
+      });
       throw new APIError(
         'INVALID_REQUEST',
         validationResult.error.errors[0]?.message || 'Invalid request',
@@ -134,6 +140,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(response);
   } catch (error) {
+    logger.error('Error in POST /api/chat', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     const { response, statusCode } = handleError(error);
     return NextResponse.json(response, { status: statusCode });
   }

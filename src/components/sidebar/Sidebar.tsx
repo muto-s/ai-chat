@@ -6,6 +6,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { NewChatButton } from './NewChatButton';
 import { ConversationList } from './ConversationList';
 import { useConversations } from '@/hooks/useConversations';
@@ -61,14 +62,17 @@ export function Sidebar({
     <div className={`flex w-64 flex-col border-r bg-white dark:border-gray-800 dark:bg-gray-900 ${className}`}>
       <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
         <h2 className="text-lg font-semibold">会話</h2>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsCollapsed(true)}
-          className="md:hidden"
-        >
-          ←
-        </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsCollapsed(true)}
+            className="md:hidden"
+          >
+            ←
+          </Button>
+        </div>
       </div>
 
       <div className="p-4">

@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
+import { toast } from 'sonner';
 import type { Message, ChatResponse } from '@/types/chat';
 
 interface UseChatMessagesReturn {
@@ -41,7 +42,11 @@ export function useChatMessages(
       setMessages(data.conversation.messages || []);
     } catch (err) {
       console.error('Error loading conversation:', err);
-      setError(err instanceof Error ? err.message : 'Unknown error');
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setError(errorMessage);
+      toast.error('会話の読み込みに失敗しました', {
+        description: errorMessage,
+      });
     } finally {
       setLoading(false);
     }
@@ -82,7 +87,15 @@ export function useChatMessages(
         });
 
         if (!response.ok) {
-          throw new Error('Failed to send message');
+          const errorData = await response.json().catch(() => null);
+          console.error('API error response:', {
+            status: response.status,
+            statusText: response.statusText,
+            errorData,
+          });
+          throw new Error(
+            errorData?.error?.message || `Failed to send message (${response.status})`
+          );
         }
 
         const data: ChatResponse = await response.json();
@@ -113,7 +126,11 @@ export function useChatMessages(
         }
       } catch (err) {
         console.error('Error sending message:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+        setError(errorMessage);
+        toast.error('メッセージの送信に失敗しました', {
+          description: errorMessage,
+        });
 
         // エラー時は楽観的更新をロールバック
         setMessages((prev) => prev.filter((msg) => !msg.id.startsWith('temp-')));

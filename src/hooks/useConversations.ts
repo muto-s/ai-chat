@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
+import { toast } from 'sonner';
 import type { Conversation } from '@/types/chat';
 
 interface UseConversationsReturn {
@@ -35,7 +36,11 @@ export function useConversations(): UseConversationsReturn {
       setConversations(data.conversations || []);
     } catch (err) {
       console.error('Error fetching conversations:', err);
-      setError(err instanceof Error ? err.message : 'Unknown error');
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setError(errorMessage);
+      toast.error('会話一覧の取得に失敗しました', {
+        description: errorMessage,
+      });
     } finally {
       setLoading(false);
     }
@@ -54,8 +59,13 @@ export function useConversations(): UseConversationsReturn {
 
         // ローカル状態から削除
         setConversations((prev) => prev.filter((conv) => conv.id !== id));
+        toast.success('会話を削除しました');
       } catch (err) {
         console.error('Error deleting conversation:', err);
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+        toast.error('会話の削除に失敗しました', {
+          description: errorMessage,
+        });
         throw err;
       }
     },

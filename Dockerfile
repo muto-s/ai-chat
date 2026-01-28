@@ -3,7 +3,7 @@
 # with Prisma and MongoDB
 # ========================================
 
-ARG NODE_VERSION=20.18.0
+ARG NODE_VERSION=20.19.0
 
 # ========================================
 # Dependencies Stage
@@ -18,9 +18,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies with cache mount
-RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm ci --omit=dev && \
+# Install dependencies
+RUN npm ci --omit=dev && \
     npm cache clean --force
 
 # ========================================
@@ -36,8 +35,7 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 # Install all dependencies including devDependencies
-RUN --mount=type=cache,target=/root/.npm,sharing=locked \
-    npm ci && \
+RUN npm ci && \
     npm cache clean --force
 
 # ========================================

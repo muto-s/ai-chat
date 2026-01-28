@@ -4,6 +4,7 @@
  * 個別メッセージコンポーネント
  */
 
+import { memo } from 'react';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import { formatRelativeTime } from '@/lib/utils';
 import type { Message } from '@/types/chat';
@@ -12,7 +13,7 @@ interface ChatMessageProps {
   message: Message;
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export const ChatMessage = memo(function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === 'user';
 
   return (
@@ -43,4 +44,4 @@ export function ChatMessage({ message }: ChatMessageProps) {
       </div>
     </div>
   );
-}
+});

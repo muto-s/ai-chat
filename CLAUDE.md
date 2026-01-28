@@ -25,7 +25,7 @@ Claude APIを使用した汎用的なAIチャットボットアプリケーシ�
 - **状態管理**: React Hooks (useState, useContext)
 
 ### 2.2 バックエンド
-- **フレームワーク**: Next.js App Router (API Routes) + Hono 4.x
+- **フレームワーク**: Next.js App Router (API Routes)
 - **ORM**: Prisma 5.x
 - **データベース**: MongoDB 7.x
 - **AIフレームワーク**: Mastra
@@ -349,7 +349,7 @@ ai-chat/
 │   │   ├── page.tsx           # トップページ（チャット画面）
 │   │   ├── globals.css        # グローバルCSS
 │   │   │
-│   │   └── api/               # API Routes（Hono統合）
+│   │   └── api/               # API Routes
 │   │       ├── chat/
 │   │       │   └── route.ts   # POST /api/chat
 │   │       └── conversations/
@@ -381,8 +381,7 @@ ai-chat/
 │   ├── lib/
 │   │   ├── prisma.ts          # Prismaクライアント
 │   │   ├── claude.ts          # Claude API統合（Mastra使用）
-│   │   ├── utils.ts           # ユーティリティ関数
-│   │   └── hono.ts            # Hono設定
+│   │   └── utils.ts           # ユーティリティ関数
 │   │
 │   ├── hooks/
 │   │   ├── useChatMessages.ts # チャットメッセージ管理
@@ -528,7 +527,7 @@ import { AnthropicProvider } from '@mastra/anthropic';
 
 const mastra = new Mastra({
   provider: new AnthropicProvider({
-    apiKey: process.env.CLAUDE_API_KEY!,
+    apiKey: process.env.ANTHROPIC_API_KEY!,
   }),
 });
 
@@ -563,7 +562,7 @@ export async function sendMessageToClaude(
 DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/ai-chat?retryWrites=true&w=majority"
 
 # Claude API
-CLAUDE_API_KEY="sk-ant-xxxxxxxxxxxxx"
+ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxx"
 
 # Next.js
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
@@ -640,44 +639,32 @@ gcloud run deploy ai-chat \
   --platform managed \
   --allow-unauthenticated \
   --set-env-vars "DATABASE_URL=YOUR_MONGODB_URL" \
-  --set-env-vars "CLAUDE_API_KEY=YOUR_CLAUDE_API_KEY"
+  --set-env-vars "ANTHROPIC_API_KEY=YOUR_ANTHROPIC_API_KEY"
 ```
 
-### 12.2 CI/CDパイプライン（オプション）
+### 12.2 CI/CDパイプライン
 GitHub Actionsを使用した自動デプロイ
 
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to Cloud Run
+**設定ファイル**: `.github/workflows/deploy.yml`（既に実装済み）
 
-on:
-  push:
-    branches:
-      - main
+#### 特徴
+- `main`または`master`ブランチへのpush時に自動デプロイ
+- Workload Identity Federation使用（推奨）
+- Cloud Buildでイメージビルド
+- Cloud Runに自動デプロイ
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+#### 設定方法
 
-    steps:
-      - uses: actions/checkout@v4
+詳細な設定手順は `GITHUB_ACTIONS_SETUP.md` を参照してください。
 
-      - name: Setup Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+**主な手順**:
+1. Workload Identity Federationの設定
+2. GitHub Secretsの追加
+   - `WIF_PROVIDER`: Workload Identity Provider ID
+   - `WIF_SERVICE_ACCOUNT`: サービスアカウントのメールアドレス
+3. GitHubリポジトリにプッシュ
 
-      - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy ai-chat \
-            --source . \
-            --region asia-northeast1 \
-            --platform managed \
-            --allow-unauthenticated \
-            --set-env-vars "DATABASE_URL=${{ secrets.DATABASE_URL }}" \
-            --set-env-vars "CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}"
-```
+**代替方法**: サービスアカウントキーを使う場合は、`.github/workflows/deploy-with-key.yml`を参照してください（セキュリティ上は非推奨）。
 
 ---
 
@@ -775,7 +762,6 @@ npx create-next-app@latest . --typescript --tailwind --app --eslint
 # 必要なパッケージインストール
 npm install prisma @prisma/client
 npm install @anthropic-ai/sdk
-npm install hono
 npm install @mastra/core @mastra/anthropic
 npm install react-markdown
 

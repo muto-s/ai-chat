@@ -4,7 +4,7 @@
  * チャット入力コンポーネント
  */
 
-import { useState, KeyboardEvent } from 'react';
+import { useState, useRef, KeyboardEvent } from 'react';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 
@@ -15,11 +15,16 @@ interface ChatInputProps {
 
 export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [message, setMessage] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSend = () => {
     if (message.trim() && !disabled) {
       onSend(message.trim());
       setMessage('');
+      // 送信後に入力欄にフォーカスを戻す
+      setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 100);
     }
   };
 
@@ -35,6 +40,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
     <div className="border-t bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
       <div className="flex gap-2">
         <Textarea
+          ref={textareaRef}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
